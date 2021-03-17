@@ -1,0 +1,1 @@
+docker image build -t self-sign-ssl-nginx:v1 .

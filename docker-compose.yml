@@ -1,0 +1,23 @@
+version: '3.6'
+services:
+  proxy:
+    image: self-sign-ssl-nginx:v1
+    networks:
+      - shared-network
+    volumes:
+    - ./config/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "444:443"
+      - "80:80"
+  server1:
+    image: nginx:latest
+    networks:
+      - shared-network
+
+  server2:
+    image: httpd:latest
+    networks:
+      - shared-network
+
+networks:
+  shared-network: {}
